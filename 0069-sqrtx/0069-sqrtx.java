@@ -5,9 +5,10 @@ class Solution {
         long ans=0;
         while(left<=right){
             long mid = (left+right)/2;
-            if(mid *mid==x){
+            long square=mid*mid;
+            if(square==x){
                 return (int) mid;
-            }else if(mid*mid<x){
+            }else if(square<x){
              left=mid+1;
              ans=mid;  // to find the Nearest Sqrt number 
             }else{
