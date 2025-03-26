@@ -28,13 +28,14 @@ class Solution {
             if(temp.left==null && temp.right==null && tempVal==targetSum){
                 return true;
             }
-            if(temp.left!=null){
-                path.push(temp.left);
-                sumPath.push(temp.left.val+tempVal);
-            }
+            
             if(temp.right!=null){
                 path.push(temp.right);
                 sumPath.push(temp.right.val+tempVal);
+            }
+            if(temp.left!=null){
+                path.push(temp.left);
+                sumPath.push(temp.left.val+tempVal);
             }
         }
     return false;
