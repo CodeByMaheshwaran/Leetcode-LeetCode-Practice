@@ -29,7 +29,7 @@ class Solution {
                 TreeNode currNode = queue.poll();
                 //check flag
                 if (flag) {
-                    reverseStack.add(currNode.val);
+                    reverseStack.push(currNode.val);
                 } else {
                     level.add(currNode.val);
                 }
