@@ -10,7 +10,7 @@ class Solution {
     private int calculateTotalHours(int[] piles,int hourly){
         int  totalHours=0;
         for(int pile: piles){
-            totalHours+=(int) Math.ceil((double)pile/(double)hourly);
+            totalHours+= Math.ceil((double)pile/(double)hourly);
         }
      return totalHours;   
     }
