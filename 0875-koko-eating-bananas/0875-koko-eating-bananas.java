@@ -1,27 +1,31 @@
 class Solution {
-    public int minEatingSpeed(int[] piles, int h) {
-       int minSpeed=1;
-       //Find Max Pile Size
-       int maxSpeed=0; 
-      for(int pile: piles){
-        maxSpeed=Math.max(maxSpeed,pile);
-      }
-      //Binary Search
-      while(minSpeed<maxSpeed){
-        int mid = minSpeed+(maxSpeed-minSpeed)/2;
-        if(canEatInTime(piles,h,mid)){
-         maxSpeed=mid;   
-        }else{
-            minSpeed=mid+1;
+    private int findMax(int[] arr){
+        int maximum=Integer.MIN_VALUE;
+        
+        for(int a:arr){
+            maximum=Math.max(maximum,a);
         }
-      }
-    return minSpeed;  
+    return maximum;    
+    } 
+    private int calculateTotalHours(int[] piles,int hourly){
+        int  totalHours=0;
+        for(int pile: piles){
+            totalHours+=(int) Math.ceil((double)pile/(double)hourly);
+        }
+     return totalHours;   
     }
-   private boolean canEatInTime(int[] piles,int h,int speed){
-    int hours=0;
-    for(int pile:piles){
-        hours+=(int) Math.ceil((double)pile/speed);
+    public int minEatingSpeed(int[] piles, int h) {
+     int low=1;
+     int high=findMax(piles);   
+      while(low<=high){
+        int mid=low+(high-low)/2;
+        int totalHours=calculateTotalHours(piles,mid);
+        if(totalHours<=h){
+         high=mid-1;   
+        }else{
+            low=mid+1;
+         }
+        }
+    return low;
     }
-   return hours<=h;
-   }
 }
