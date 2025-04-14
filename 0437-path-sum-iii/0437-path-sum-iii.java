@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    private int pathSumWithRoot(TreeNode root, int sum) {
+    private int pathSumWithRoot(TreeNode root, long sum) {
         if (root == null)
             return 0;
         int result = 0;
@@ -27,6 +27,6 @@ class Solution {
 
     public int pathSum(TreeNode root, int targetSum) {
         if(root==null) return 0;
-    return pathSum(root.left,targetSum)+pathSumWithRoot(root,targetSum)+pathSum(root.right,targetSum);
+    return pathSum(root.left,targetSum)+pathSumWithRoot(root,(long)targetSum)+pathSum(root.right,targetSum);
     }
 }
